@@ -4,7 +4,7 @@ class Node{
         this.next = null;
     }
 }
-class Stack{
+class Queue{
     constructor(){
         this.length = 0;
         this.first = null;
@@ -35,10 +35,10 @@ class Stack{
     }
 }
 
-stack = new Stack()
-stack.push(10);
-stack.push(23)
-stack.push(123)
-console.log(stack)
-console.log(stack.pop())
-console.log(stack)
+queue = new Queue()
+queue.push(10);
+queue.push(23)
+queue.push(123)
+console.log(queue)
+console.log(queue.pop())
+console.log(queue)
