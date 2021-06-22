@@ -98,4 +98,34 @@ function quickSort(arr, left=0, right=arr.length-1){
     return arr
 }
 
-console.log(quickSort([100,-3,2,4,6,9,1,5,3,23]))
+function radixSort(nums){
+    // helper function for max digits
+    function digitCount(num) {
+        if (num === 0) return 1;
+        return Math.floor(Math.log10(Math.abs(num))) + 1;
+      }
+      
+      function mostDigits(nums) {
+        let maxDigits = 0;
+        for (let i = 0; i < nums.length; i++) {
+          maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+        }
+        return maxDigits;
+      }
+    // helper function to get nth digit
+    function getNthDigit(num, n){
+        return Math.floor(Math.abs(num)/Math.pow(10, n))%10;
+    }
+    let maxDigitCount = mostDigits(nums);
+    for(let k = 0; k < maxDigitCount; k++){
+        let digitBuckets = Array.from({length: 10}, () => []);
+        for(let i = 0; i < nums.length; i++){
+            let digit = getNthDigit(nums[i],k);
+            digitBuckets[digit].push(nums[i]);
+        }
+        nums = [].concat(...digitBuckets);
+    }
+    return nums;
+}
+
+console.log(radixSort([100,3,2,4,6,9,1,5,3,23]))
