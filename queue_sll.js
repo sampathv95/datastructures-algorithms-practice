@@ -4,6 +4,8 @@ class Node{
         this.next = null;
     }
 }
+// most efficient way is to push to last and remove from first
+// so that we can avoid the other way (removing from last is time consuming as we've to travel all the way to last element)
 class Queue{
     constructor(){
         this.length = 0;
